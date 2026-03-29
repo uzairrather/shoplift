@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans text-dgray antialiased; }
+}
+
+@layer components {
+  .btn-orange {
+    @apply font-mont text-xs font-bold uppercase tracking-widest px-8 py-3.5 bg-orange text-white transition-all duration-200 hover:bg-orange2 hover:-translate-y-0.5 inline-block cursor-pointer border-0;
+  }
+  .btn-white-outline {
+    @apply font-mont text-xs font-bold uppercase tracking-widest px-8 py-3.5 border-2 border-white/25 text-white transition-all duration-200 hover:border-white hover:bg-white/5 inline-block cursor-pointer;
+  }
+  .btn-white {
+    @apply font-mont text-xs font-bold uppercase tracking-widest px-9 py-3.5 bg-white text-orange transition-all duration-200 hover:bg-navy hover:text-white inline-block cursor-pointer border-0;
+  }
+  .section-eyebrow {
+    @apply font-mont text-xs font-bold tracking-[3px] uppercase text-orange mb-2.5 flex items-center gap-2.5;
+  }
+  .section-eyebrow::before {
+    content: '';
+    @apply block w-6 h-0.5 bg-orange flex-shrink-0;
+  }
+  .section-title {
+    @apply font-mont font-black text-navy leading-tight tracking-tight;
+    font-size: clamp(26px, 3.5vw, 40px);
+    letter-spacing: -1px;
+  }
+  .section-title-white { @apply section-title text-white; }
+  .nav-link {
+    @apply font-mont text-xs font-bold uppercase tracking-widest text-white/60 px-4 h-[68px] flex items-center border-b-[3px] border-transparent transition-all duration-200 hover:text-white hover:border-orange cursor-pointer;
+  }
+  .nav-link.active { @apply text-white border-orange; }
+  .reveal { @apply opacity-0 translate-y-7 transition-all duration-700 ease-out; }
+  .reveal.visible { @apply opacity-100 translate-y-0; }
+  .reveal-left { @apply opacity-0 -translate-x-7 transition-all duration-700 ease-out; }
+  .reveal-left.visible { @apply opacity-100 translate-x-0; }
+  .reveal-right { @apply opacity-0 translate-x-7 transition-all duration-700 ease-out; }
+  .reveal-right.visible { @apply opacity-100 translate-x-0; }
+}
