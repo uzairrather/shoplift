@@ -6,8 +6,8 @@ export default {
       colors: {
         navy: '#1a2332',
         navy2: '#0f1825',
-        orange: '#e8520a',
-        orange2: '#ff6b25',
+       orange: '#16a34a',
+orange2: '#15803d',
         offwhite: '#f5f5f3',
         lg: '#eaeaea',
         mgray: '#777777',

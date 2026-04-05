@@ -6,7 +6,9 @@ import PageHero from '../components/ui/PageHero'
 export default function ServiceDetail() {
   const { key } = useParams()
   const navigate = useNavigate()
-  const svc = SERVICES[key]
+  const svc = Object.values(SERVICES).find(
+  (item) => item.key === key
+)
 
   useEffect(() => { window.scrollTo(0, 0) }, [key])
 

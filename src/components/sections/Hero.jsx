@@ -43,11 +43,11 @@ export default function Hero() {
   return (
     <section className="relative min-h-[91vh] flex items-center overflow-hidden bg-navy2">
       {/* BG */}
-      <div
-        className="absolute inset-0 opacity-[0.17]"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,16,28,0.97)] via-[rgba(10,16,28,0.92)] to-[rgba(10,16,28,0.7)]" />
+     <div
+  className="absolute inset-0 opacity-[0.65]"
+  style={{ backgroundImage: "url('/PHOTOS/Crown-Jewellers/Crown_131117_010.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
+/>
+<div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,16,28,0.80)] via-[rgba(10,16,28,0.45)] to-[rgba(10,16,28,0.15)]" />
       <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,0.012) 60px,rgba(255,255,255,0.012) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.012) 60px,rgba(255,255,255,0.012) 61px)' }} />
 
       <div className="max-w-[1240px] mx-auto px-6 py-20 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-16 items-center" ref={heroRef}>
