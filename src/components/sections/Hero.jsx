@@ -43,19 +43,20 @@ export default function Hero() {
   return (
     <section className="relative min-h-[91vh] flex items-center overflow-hidden bg-navy2">
       {/* BG */}
-     <div
-  className="absolute inset-0 opacity-[0.65]"
-  style={{ backgroundImage: "url('/PHOTOS/Crown-Jewellers/Crown_131117_010.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
-/>
-<div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,16,28,0.80)] via-[rgba(10,16,28,0.45)] to-[rgba(10,16,28,0.15)]" />
+      <div
+        className="absolute inset-0 opacity-[0.65]"
+        style={{ backgroundImage: "url('/PHOTOS/Crown-Jewellers/Crown_131117_010.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,16,28,0.80)] via-[rgba(10,16,28,0.45)] to-[rgba(10,16,28,0.15)]" />
       <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,0.012) 60px,rgba(255,255,255,0.012) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.012) 60px,rgba(255,255,255,0.012) 61px)' }} />
 
       <div className="max-w-[1240px] mx-auto px-6 py-20 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-16 items-center" ref={heroRef}>
         {/* LEFT */}
         <div>
+          {/* ✅ CHANGED: eyebrow text */}
           <div data-anim className="inline-flex items-center gap-2.5 font-mont text-[11px] font-bold tracking-[3px] uppercase text-orange mb-5">
             <span className="w-7 h-0.5 bg-orange" />
-            Brisbane's Trusted Shopfitters Since 2002
+            Specialist Retail Design & Delivery
           </div>
 
           <h1 data-anim className="font-mont font-black leading-[0.95] tracking-[-2px] text-white mb-3" style={{ fontSize: 'clamp(42px,5.5vw,72px)' }}>
@@ -67,8 +68,9 @@ export default function Hero() {
             On Spec · On Time · On Budget
           </p>
 
+          {/* ✅ CHANGED: body paragraph */}
           <p data-anim className="text-[15px] leading-[1.85] text-white/55 max-w-[520px] mb-10 font-light">
-            100% committed to completing all retail, office, medical and commercial fitouts on time and on budget. Quality workmanship and client satisfaction are our fundamental values.
+            From jewellery boutiques to Mini Majors, kiosks to cafes — we design and build retail environments that drive sales and create unforgettable customer experiences across Australia.
           </p>
 
           <div data-anim className="flex flex-wrap gap-3.5 mb-12">

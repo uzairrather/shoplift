@@ -2,10 +2,12 @@ import Hero from '../components/sections/Hero'
 import {
   TrustStrip,
   ServicesGrid,
-  GallerySection, 
+  SectorsSection,
+  GallerySection,
   WhyUs,
   ProjectsGrid,
   StatsBand,
+  ProcessSection,
   Testimonials,
   Brands,
   CtaBanner,
@@ -18,10 +20,12 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <ServicesGrid />
+      <SectorsSection />
       <GallerySection />
       <WhyUs />
       <ProjectsGrid />
       <StatsBand />
+      <ProcessSection />
       <Testimonials />
       <Brands />
       <CtaBanner />

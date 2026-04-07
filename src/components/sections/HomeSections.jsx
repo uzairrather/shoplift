@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useReveal, useCountUp } from '../../hooks'
-import { TRUST_ITEMS, SERVICES_LIST, PROJECTS_LIST, TESTIMONIALS, BRANDS } from '../../data'
+import { TRUST_ITEMS, SERVICES_LIST, PROJECTS_LIST, TESTIMONIALS, BRANDS, SECTORS, PROCESS_STEPS } from '../../data'
 
 /* ── REVEAL WRAPPER ── */
 function Reveal({ children, className = '', dir = 'up', delay = 0 }) {
@@ -54,7 +54,7 @@ export function ServicesGrid() {
                 onClick={() => navigate(`/services/${svc.key}`)}
                 className="group bg-white hover:bg-offwhite transition-colors p-11 relative overflow-hidden cursor-pointer h-full"
                 style={{ borderBottom: '4px solid transparent' }}
-                onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#e8520a'}
+                onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#16a34a'}
                 onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'transparent'}
               >
                 <div className="font-mont text-[46px] font-black text-navy/[0.055] absolute top-4 right-5 leading-none select-none">{svc.num}</div>
@@ -64,6 +64,101 @@ export function ServicesGrid() {
                 <div className="inline-flex items-center gap-1.5 mt-4 font-mont text-[10px] font-bold uppercase tracking-[1.5px] text-orange">
                   Learn More <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
                 </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ══════════════════════════════════════════════════
+   ── SECTORS SECTION ── (NEW)
+══════════════════════════════════════════════════ */
+export function SectorsSection() {
+  return (
+    <section className="py-20 bg-offwhite">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-14">
+          <div>
+            <Reveal><div className="section-eyebrow">Industries We Serve</div></Reveal>
+            <Reveal delay={80}><h2 className="section-title">We Work Across All Retail Sectors</h2></Reveal>
+            <Reveal delay={160}>
+              <p className="text-[14px] text-mgray leading-relaxed max-w-[520px] mt-3 font-light">
+                Whether you're opening a luxury boutique or a bustling Mini Major — we bring industry-specific expertise to every project.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SECTORS.map((sector, i) => (
+            <Reveal key={sector.name} delay={i * 60}>
+              <div className="bg-white p-8 border-l-4 border-orange h-full hover:shadow-md transition-shadow">
+                <h3 className="font-mont text-[15px] font-black text-navy uppercase tracking-[0.5px] mb-2">
+                  {sector.name}
+                </h3>
+                <p className="text-[13px] text-mgray leading-relaxed font-light mb-4">
+                  {sector.desc}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {sector.features.map(f => (
+                    <span key={f} className="font-mont text-[10px] font-bold uppercase tracking-[1px] text-orange bg-orange/10 px-2.5 py-1">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ══════════════════════════════════════════════════
+   ── PROCESS SECTION ── (NEW)
+══════════════════════════════════════════════════ */
+export function ProcessSection() {
+  return (
+    <section className="py-20 bg-navy">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="text-center mb-14">
+          <Reveal><div className="section-eyebrow text-orange">How It Works</div></Reveal>
+          <Reveal delay={80}><h2 className="section-title text-white">Our Process</h2></Reveal>
+          <Reveal delay={160}>
+            <p className="text-[14px] text-white/45 leading-relaxed max-w-[500px] mt-3 font-light mx-auto">
+              From first conversation to final handover — a clear, structured process that keeps you informed at every stage.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.07]">
+          {PROCESS_STEPS.map((step, i) => (
+            <Reveal key={step.num} delay={i * 80}>
+              <div className="bg-navy p-8 relative group hover:bg-navy2 transition-colors">
+                {/* Step number */}
+                <div className="font-mont text-[64px] font-black text-white/[0.05] absolute top-4 right-6 leading-none select-none">
+                  {step.num}
+                </div>
+                {/* Orange accent line */}
+                <div className="w-8 h-0.5 bg-orange mb-5" />
+                {/* Title */}
+                <h3 className="font-mont text-[14px] font-black text-white uppercase tracking-[0.5px] mb-2">
+                  {step.title}
+                </h3>
+                {/* Desc */}
+                <p className="text-[13px] text-white/45 leading-relaxed font-light mb-4">
+                  {step.desc}
+                </p>
+                {/* Duration badge */}
+                {step.duration && (
+                  <span className="inline-block font-mont text-[10px] font-black uppercase tracking-[2px] text-orange bg-orange/10 px-3 py-1">
+                    {step.duration}
+                  </span>
+                )}
               </div>
             </Reveal>
           ))}
@@ -127,7 +222,7 @@ const galleryObserver = typeof window !== 'undefined'
     )
   : null
 
-/* ── Lazy image — skeleton placeholder at natural aspect ratio ── */
+/* ── Lazy image ── */
 function LazyImg({ src, alt }) {
   const [errored, setErrored] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -142,7 +237,6 @@ function LazyImg({ src, alt }) {
 
   return (
     <div className="w-full relative">
-      {/* Skeleton — collapses automatically once image loads */}
       {!loaded && (
         <div className="w-full bg-[#e8e8e8] animate-pulse" style={{ aspectRatio: '4/3' }} />
       )}
@@ -178,17 +272,11 @@ function GalleryCard({ item, index, onClick }) {
       onClick={onClick}
     >
       <LazyImg src={item.src} alt={item.label} />
-
-      {/* Hover overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-      {/* Label */}
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
         <div className="font-mont text-[9px] font-bold uppercase tracking-[3px] text-orange mb-1">{item.cat}</div>
         <div className="font-mont text-[14px] font-black text-white leading-tight">{item.label}</div>
       </div>
-
-      {/* Zoom icon */}
       <div className="absolute top-3 right-3 w-9 h-9 bg-orange flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 pointer-events-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -232,20 +320,11 @@ export function GallerySection() {
   return (
     <section id="gallery" className="py-20 bg-white">
       <style>{`
-        .gallery-card {
-          opacity: 0;
-          transform: translateY(8px);
-          transition: opacity 0.25s ease, transform 0.25s ease;
-        }
-        .gallery-card.revealed {
-          opacity: 1;
-          transform: none;
-        }
+        .gallery-card { opacity: 0; transform: translateY(8px); transition: opacity 0.25s ease, transform 0.25s ease; }
+        .gallery-card.revealed { opacity: 1; transform: none; }
       `}</style>
 
       <div className="max-w-[1240px] mx-auto px-6">
-
-        {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
             <Reveal><div className="section-eyebrow">Our Gallery</div></Reveal>
@@ -266,7 +345,6 @@ export function GallerySection() {
           </Reveal>
         </div>
 
-        {/* Filter Tabs */}
         <Reveal delay={80}>
           <div className="flex flex-wrap gap-2 mb-10">
             {ALL_CATS.map(cat => (
@@ -274,10 +352,7 @@ export function GallerySection() {
                 key={cat}
                 onClick={() => { setActive(cat); setLightbox(null) }}
                 className={`font-mont text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 transition-all duration-200 border flex items-center gap-2
-                  ${active === cat
-                    ? 'bg-orange text-white border-orange'
-                    : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'
-                  }`}
+                  ${active === cat ? 'bg-orange text-white border-orange' : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'}`}
               >
                 {cat}
                 <span className={`text-[10px] font-black ${active === cat ? 'text-white/70' : 'text-mgray/60'}`}>{counts[cat]}</span>
@@ -286,55 +361,20 @@ export function GallerySection() {
           </div>
         </Reveal>
 
-        {/* ── MASONRY — natural heights, zero spacing gaps ── */}
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-2">
           {filtered.map((item, i) => (
-            <GalleryCard
-              key={`${active}-${i}`}
-              item={item}
-              index={i}
-              onClick={() => setLightbox(i)}
-            />
+            <GalleryCard key={`${active}-${i}`} item={item} index={i} onClick={() => setLightbox(i)} />
           ))}
         </div>
-
       </div>
 
-      {/* ── LIGHTBOX ── */}
       {lightbox !== null && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/96 flex items-center justify-center"
-          onClick={() => setLightbox(null)}
-        >
-          {/* Close */}
-          <button
-            onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 w-11 h-11 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-lg transition-colors z-10"
-          >✕</button>
-
-          {/* Counter */}
-          <div className="absolute top-5 left-1/2 -translate-x-1/2 font-mont text-[11px] font-bold uppercase tracking-[2px] text-white/40 z-10">
-            {lightbox + 1} / {filtered.length}
-          </div>
-
-          {/* Prev */}
-          <button
-            onClick={e => { e.stopPropagation(); prev() }}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-3xl transition-colors z-10"
-          >‹</button>
-
-          {/* Main image */}
-          <div
-            className="relative mx-16 max-w-5xl w-full"
-            onClick={e => e.stopPropagation()}
-          >
-            <img
-              src={filtered[lightbox]?.src}
-              alt={filtered[lightbox]?.label}
-              className="w-full max-h-[75vh] object-contain"
-              onError={e => { e.target.style.opacity = '0.3' }}
-            />
-            {/* Caption */}
+        <div className="fixed inset-0 z-[9999] bg-black/96 flex items-center justify-center" onClick={() => setLightbox(null)}>
+          <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 w-11 h-11 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-lg transition-colors z-10">✕</button>
+          <div className="absolute top-5 left-1/2 -translate-x-1/2 font-mont text-[11px] font-bold uppercase tracking-[2px] text-white/40 z-10">{lightbox + 1} / {filtered.length}</div>
+          <button onClick={e => { e.stopPropagation(); prev() }} className="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-3xl transition-colors z-10">‹</button>
+          <div className="relative mx-16 max-w-5xl w-full" onClick={e => e.stopPropagation()}>
+            <img src={filtered[lightbox]?.src} alt={filtered[lightbox]?.label} className="w-full max-h-[75vh] object-contain" onError={e => { e.target.style.opacity = '0.3' }} />
             <div className="absolute bottom-0 left-0 right-0 bg-navy px-6 py-4 flex items-center justify-between">
               <div>
                 <div className="font-mont text-[9px] font-bold uppercase tracking-[3px] text-orange mb-1">{filtered[lightbox]?.cat}</div>
@@ -346,31 +386,11 @@ export function GallerySection() {
               </div>
             </div>
           </div>
-
-          {/* Next */}
-          <button
-            onClick={e => { e.stopPropagation(); next() }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-3xl transition-colors z-10"
-          >›</button>
-
-          {/* Thumbnail strip */}
-          <div
-            className="absolute left-0 right-0 flex gap-1.5 p-2 overflow-x-auto bg-black/80 z-10"
-            style={{ bottom: '68px' }}
-          >
+          <button onClick={e => { e.stopPropagation(); next() }} className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-3xl transition-colors z-10">›</button>
+          <div className="absolute left-0 right-0 flex gap-1.5 p-2 overflow-x-auto bg-black/80 z-10" style={{ bottom: '68px' }}>
             {filtered.map((item, i) => (
-              <div
-                key={i}
-                onClick={e => { e.stopPropagation(); setLightbox(i) }}
-                className={`flex-shrink-0 w-16 h-16 overflow-hidden cursor-pointer border-2 transition-all ${i === lightbox ? 'border-orange' : 'border-transparent opacity-40 hover:opacity-80'}`}
-              >
-                <img
-                  src={item.src}
-                  alt=""
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  onError={e => { e.target.style.opacity = '0' }}
-                />
+              <div key={i} onClick={e => { e.stopPropagation(); setLightbox(i) }} className={`flex-shrink-0 w-16 h-16 overflow-hidden cursor-pointer border-2 transition-all ${i === lightbox ? 'border-orange' : 'border-transparent opacity-40 hover:opacity-80'}`}>
+                <img src={item.src} alt="" loading="lazy" className="w-full h-full object-cover" onError={e => { e.target.style.opacity = '0' }} />
               </div>
             ))}
           </div>
@@ -422,14 +442,7 @@ export function WhyUs() {
               <div className="grid grid-cols-2 grid-rows-2 gap-1">
                 {WHY_IMGS.map((img, i) => (
                   <div key={i} className={`overflow-hidden bg-[#1a2a3a] ${img.tall ? 'row-span-2' : ''}`}>
-                    <img
-                      src={img.src}
-                      alt={img.label}
-                      loading="lazy"
-                      decoding="async"
-                      className={`w-full object-cover brightness-75 hover:brightness-90 transition-all duration-500 hover:scale-105 ${img.tall ? 'h-[424px]' : 'h-[210px]'}`}
-                      onError={e => { e.target.style.display = 'none' }}
-                    />
+                    <img src={img.src} alt={img.label} loading="lazy" decoding="async" className={`w-full object-cover brightness-75 hover:brightness-90 transition-all duration-500 hover:scale-105 ${img.tall ? 'h-[424px]' : 'h-[210px]'}`} onError={e => { e.target.style.display = 'none' }} />
                   </div>
                 ))}
               </div>
