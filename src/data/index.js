@@ -178,42 +178,6 @@ export const SERVICES = {
     ],
     relatedProjects: ['chemist', 'wiley', 'optus'],
   },
-
-  joinery: {
-    key: 'Maintenance',
-    name: 'Maintenance & Aftercare Support',
-    icon: '🔧',
-    num: '06',
-    tagline: 'Ongoing maintenance services to keep your retail space looking pristine year after year.',
-    heroImg: '/Project/_K0A1235.webp',
-    detailImg: '/Project/_K0A1246.webp',
-    imgCap: 'Maintenance & Aftercare — Keeping Your Fitout Pristine',
-    cardDesc: 'Ongoing maintenance services to keep your retail space looking pristine year after year. Your fit-out is a major investment — protect it.',
-    bodyTitle: 'Protect Your Investment with Aftercare Support',
-    bodyText: [
-      'Your fit-out is a major investment — and ongoing maintenance is what keeps it looking exceptional year after year. Our aftercare support team is dedicated to preserving the quality and appearance of your retail environment.',
-      'We offer scheduled maintenance programs tailored to your specific fitout, ensuring that joinery, fixtures, lighting, and finishes remain in perfect condition. Quick-response repairs minimise disruption and keep your store trading.',
-      'We work across a broad range of retail sectors, partnering closely with retailers, builders, and developers to deliver ongoing support that is flexible, reliable, and cost-effective.',
-    ],
-    gallery1: [
-      '/Project/_K0A1235.webp',
-      '/Project/_K0A1246.webp',
-      '/Project/_K0A1245.webp',
-    ],
-    gallery2: [
-      '/Project/Toombul_Beauty_290519_0600.webp',
-      '/Project/Toombul_Beauty_290519_0610.webp',
-    ],
-    features: [
-      { title: 'Regular Maintenance', desc: 'Scheduled maintenance programs to keep your fitout in perfect condition year-round.' },
-      { title: 'Repairs', desc: 'Fast-response repair services to fix damage and wear quickly with minimal disruption.' },
-      { title: 'Joinery Repairs', desc: 'Specialist joinery repair and restoration by the same tradespeople who built your fitout.' },
-      { title: 'Lighting Maintenance', desc: 'Lamp replacement, fixture repairs, and control system servicing.' },
-      { title: 'Condition Reporting', desc: 'Regular condition assessments with detailed reports and recommended works.' },
-      { title: 'Reactive Support', desc: 'Quick-response reactive support available when unexpected issues arise.' },
-    ],
-    relatedProjects: ['wiley', 'optus', 'pandora'],
-  },
 }
 
 export const SERVICES_LIST = Object.values(SERVICES)

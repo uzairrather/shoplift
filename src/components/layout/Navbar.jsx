@@ -42,9 +42,9 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="cursor-pointer flex-shrink-0" onClick={goHome}>
-          <div className="font-mont text-[19px] font-black text-white leading-tight">ShopFittings</div>
-          <div className="font-mont text-[10px] font-semibold text-orange tracking-[2.5px] uppercase mt-0.5">Solutions Group</div>
-        </div>
+  <img src="/ssi-logo-1.png" alt="ShopFittings Solutions" className="h-[42px] w-auto object-contain" />
+</div>
+
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center">

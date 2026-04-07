@@ -73,8 +73,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="cursor-pointer mb-3" onClick={() => navigate('/')}>
-              <div className="font-mont text-lg font-black text-white">ShopFittings</div>
-              <div className="font-mont text-[9px] font-semibold text-orange tracking-[3px] uppercase mt-1">Solutions Group</div>
+              <img
+                src="/ssi-logo-1.png"
+                alt="Shopfitting Solutions Intl"
+                className="h-[36px] w-auto object-contain"
+              />
             </div>
             <p className="text-xs text-white/38 leading-relaxed max-w-[200px] mt-3 font-light">
               Specialist retail design & delivery. From jewellery boutiques to Mini Majors — we build retail environments that drive sales across Australia.

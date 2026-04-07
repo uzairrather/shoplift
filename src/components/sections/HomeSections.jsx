@@ -510,12 +510,12 @@ export function Testimonials() {
    ── BRANDS — seamless logo carousel ── (UPDATED)
 ══════════════════════════════════════════════════ */
 const BRAND_LOGOS = [
-  { name: 'Pandora',           logo: '/logos/pandora.png' },
-  { name: 'Optus',             logo: '/logos/optus.png' },
-  { name: 'Baskin-Robbins',    logo: '/logos/Baskin-Robbins.png' },
-  { name: 'Chemist Warehouse', logo: '/logos/cim.png' },
-  { name: 'Beko',              logo: '/logos/beko-logo.png' },
-  { name: 'Wiley & Co',        logo: '/logos/willy.jpg' },
+  { name: 'Pandora',           logo: '/logos/pandora.png',        href: 'https://www.pandora.net/en-au' },
+  { name: 'Optus',             logo: '/logos/optus.png',          href: 'https://www.optus.com.au' },
+  { name: 'Baskin-Robbins',    logo: '/logos/Baskin-Robbins.png', href: 'https://www.baskinrobbins.com.au' },
+  { name: 'Chemist Warehouse', logo: '/logos/cim.png',            href: 'https://www.chemistwarehouse.com.au' },
+  { name: 'Beko',              logo: '/logos/beko-logo.png',      href: 'https://www.beko.com/en-au' },
+  { name: 'Wiley & Co',        logo: '/logos/willy.jpg',          href: 'https://wiley.com.au' },
 ]
 
 export function Brands() {
@@ -535,22 +535,27 @@ export function Brands() {
       >
         <div className="brands-track flex items-center gap-16" style={{ width: 'max-content' }}>
           {items.map((brand, i) => (
-            <div key={i} className="flex-shrink-0 flex items-center justify-center" style={{ width: '160px', height: '70px' }}>
+            <a
+              key={i}
+              href={brand.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 flex items-center justify-center"
+              style={{ width: '160px', height: '70px' }}
+            >
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="max-h-[64px] max-w-[160px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 cursor-default"
-
+                className="max-h-[64px] max-w-[160px] w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
                 onError={e => {
                   e.target.style.display = 'none'
                   if (e.target.nextSibling) e.target.nextSibling.style.display = 'block'
                 }}
               />
-              {/* Fallback text if logo fails */}
               <span className="font-mont text-[15px] font-black text-[#ccc] tracking-tight hidden">
                 {brand.name}
               </span>
-            </div>
+            </a>
           ))}
         </div>
       </div>
