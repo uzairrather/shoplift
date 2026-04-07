@@ -9,14 +9,6 @@ export default function Topbar() {
         <a href="mailto:info@shopfittings.com.au" className="hidden sm:flex text-xs text-white/50 hover:text-white transition-colors items-center gap-1.5">
           ✉ info@shopfittings.com.au
         </a>
-        <div className="hidden sm:block w-px h-3 bg-white/15" />
-        <span className="hidden md:flex text-xs text-white/50 items-center gap-1.5">
-          📍 Lawnton, Brisbane QLD 4501
-        </span>
-        <div className="hidden md:block w-px h-3 bg-white/15" />
-        <span className="hidden md:flex text-xs text-white/50 items-center gap-1.5">
-          🕐 Mon–Fri: 7am–5pm
-        </span>
       </div>
     </div>
   )

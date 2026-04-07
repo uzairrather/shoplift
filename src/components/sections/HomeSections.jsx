@@ -73,9 +73,7 @@ export function ServicesGrid() {
   )
 }
 
-/* ══════════════════════════════════════════════════
-   ── SECTORS SECTION ── (NEW)
-══════════════════════════════════════════════════ */
+/* ── SECTORS SECTION ── */
 export function SectorsSection() {
   return (
     <section className="py-20 bg-offwhite">
@@ -91,22 +89,15 @@ export function SectorsSection() {
             </Reveal>
           </div>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SECTORS.map((sector, i) => (
             <Reveal key={sector.name} delay={i * 60}>
               <div className="bg-white p-8 border-l-4 border-orange h-full hover:shadow-md transition-shadow">
-                <h3 className="font-mont text-[15px] font-black text-navy uppercase tracking-[0.5px] mb-2">
-                  {sector.name}
-                </h3>
-                <p className="text-[13px] text-mgray leading-relaxed font-light mb-4">
-                  {sector.desc}
-                </p>
+                <h3 className="font-mont text-[15px] font-black text-navy uppercase tracking-[0.5px] mb-2">{sector.name}</h3>
+                <p className="text-[13px] text-mgray leading-relaxed font-light mb-4">{sector.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {sector.features.map(f => (
-                    <span key={f} className="font-mont text-[10px] font-bold uppercase tracking-[1px] text-orange bg-orange/10 px-2.5 py-1">
-                      {f}
-                    </span>
+                    <span key={f} className="font-mont text-[10px] font-bold uppercase tracking-[1px] text-orange bg-orange/10 px-2.5 py-1">{f}</span>
                   ))}
                 </div>
               </div>
@@ -118,9 +109,7 @@ export function SectorsSection() {
   )
 }
 
-/* ══════════════════════════════════════════════════
-   ── PROCESS SECTION ── (NEW)
-══════════════════════════════════════════════════ */
+/* ── PROCESS SECTION ── */
 export function ProcessSection() {
   return (
     <section className="py-20 bg-navy">
@@ -134,30 +123,16 @@ export function ProcessSection() {
             </p>
           </Reveal>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.07]">
           {PROCESS_STEPS.map((step, i) => (
             <Reveal key={step.num} delay={i * 80}>
               <div className="bg-navy p-8 relative group hover:bg-navy2 transition-colors">
-                {/* Step number */}
-                <div className="font-mont text-[64px] font-black text-white/[0.05] absolute top-4 right-6 leading-none select-none">
-                  {step.num}
-                </div>
-                {/* Orange accent line */}
+                <div className="font-mont text-[64px] font-black text-white/[0.05] absolute top-4 right-6 leading-none select-none">{step.num}</div>
                 <div className="w-8 h-0.5 bg-orange mb-5" />
-                {/* Title */}
-                <h3 className="font-mont text-[14px] font-black text-white uppercase tracking-[0.5px] mb-2">
-                  {step.title}
-                </h3>
-                {/* Desc */}
-                <p className="text-[13px] text-white/45 leading-relaxed font-light mb-4">
-                  {step.desc}
-                </p>
-                {/* Duration badge */}
+                <h3 className="font-mont text-[14px] font-black text-white uppercase tracking-[0.5px] mb-2">{step.title}</h3>
+                <p className="text-[13px] text-white/45 leading-relaxed font-light mb-4">{step.desc}</p>
                 {step.duration && (
-                  <span className="inline-block font-mont text-[10px] font-black uppercase tracking-[2px] text-orange bg-orange/10 px-3 py-1">
-                    {step.duration}
-                  </span>
+                  <span className="inline-block font-mont text-[10px] font-black uppercase tracking-[2px] text-orange bg-orange/10 px-3 py-1">{step.duration}</span>
                 )}
               </div>
             </Reveal>
@@ -172,33 +147,27 @@ export function ProcessSection() {
    ── GALLERY SECTION ──
 ══════════════════════════════════════════════════ */
 const GALLERY_ITEMS = [
-  // RETAIL
   { src: '/OPTIMIZED/Laloma HR/LLMAtville081212_008.webp', label: 'Premium Retail Fitout', cat: 'Retail' },
   { src: '/OPTIMIZED/NJ hires shots (1)/8.webp', label: 'Fashion Boutique Display', cat: 'Retail' },
   { src: '/OPTIMIZED/NJ hires shots (1)/14.webp', label: 'Jewellery Store Interior', cat: 'Retail' },
   { src: '/OPTIMIZED/Laloma HR/LLMAtville081212_045.webp', label: 'Luxury Display Shelving', cat: 'Retail' },
   { src: '/OPTIMIZED/NJ hires shots (1)/7.webp', label: 'Retail Shopfront', cat: 'Retail' },
   { src: '/OPTIMIZED/Laloma HR/LLMAtville081212_029.webp', label: 'Clothing Store Fitout', cat: 'Retail' },
-  // HOSPITALITY
   { src: '/OPTIMIZED/IDS_ Sea Feul_1216 (1)/SeaFuel_1216_043.webp', label: 'Specialty Café Interior', cat: 'Hospitality' },
   { src: '/OPTIMIZED/IDS_ Sea Feul_1216 (1)/SeaFuel_1216_010.webp', label: 'Restaurant Dining Room', cat: 'Hospitality' },
   { src: '/OPTIMIZED/IDS_ Sea Feul_1216 (1)/SeaFuel_1216_020.webp', label: 'Bar & Pub Fitout', cat: 'Hospitality' },
   { src: '/OPTIMIZED/IDS_ Sea Feul_1216 (1)/SeaFuel_1216_022.webp', label: 'Coffee Shop Counter', cat: 'Hospitality' },
   { src: '/OPTIMIZED/IDS_ Sea Feul_1216 (1)/SeaFuel_1216_095.webp', label: 'QSR National Rollout', cat: 'Hospitality' },
-  // COMMERCIAL
   { src: '/OPTIMIZED/DIAMOND LAB HI RES/ID_DL_0624_0186.webp', label: 'Corporate HQ Fitout', cat: 'Commercial' },
   { src: '/OPTIMIZED/DIAMOND LAB HI RES/ID_DL_0624_0093.webp', label: 'Open Plan Commercial', cat: 'Commercial' },
   { src: '/OPTIMIZED/DIAMOND LAB HI RES/ID_DL_0624_0128.webp', label: 'Commercial Building', cat: 'Commercial' },
   { src: '/OPTIMIZED/DIAMOND LAB HI RES/ID_DL_0624_0043.webp', label: 'Commercial Reception', cat: 'Commercial' },
-  // OFFICE
   { src: '/OPTIMIZED/DIAMOND LAB HI RES/ID_DL_0624_0036.webp', label: 'Modern Open Plan Office', cat: 'Office' },
   { src: '/OPTIMIZED/PRINCESS NAILS 1/Princess_Nails_290519_0514.webp', label: 'Boardroom Fitout', cat: 'Office' },
   { src: '/OPTIMIZED/JEWELL PACK/Gordon/boxes/DSC05132.webp', label: 'Breakout Space', cat: 'Office' },
-  // MEDICAL
   { src: '/OPTIMIZED/TOOMBUL B/TYoombul_Beauty_290519_0576.webp', label: 'Pharmacy Fitout', cat: 'Medical' },
   { src: '/OPTIMIZED/TOOMBUL B/Toombul_Beauty_290519_0587.webp', label: 'Medical Centre', cat: 'Medical' },
   { src: '/OPTIMIZED/TOOMBUL B/Toombul_Beauty_290519_0614.webp', label: 'Waiting Area', cat: 'Medical' },
-  // JOINERY
   { src: '/OPTIMIZED/mazzone/IMG-0471 (1)-gigapixel-standard-scale-6_00x.webp', label: 'Bespoke Joinery', cat: 'Joinery' },
   { src: '/OPTIMIZED/mazzone/IMG-0485 (2)-gigapixel-standard-scale-6_00x (2).webp', label: 'Cabinet Work', cat: 'Joinery' },
   { src: '/OPTIMIZED/Diamonds international/DI_ch_018.webp', label: 'Kitchen Joinery', cat: 'Joinery' },
@@ -207,7 +176,6 @@ const GALLERY_ITEMS = [
 
 const ALL_CATS = ['All', 'Retail', 'Hospitality', 'Commercial', 'Office', 'Medical', 'Joinery']
 
-/* ── Shared IntersectionObserver ── */
 const galleryObserver = typeof window !== 'undefined'
   ? new IntersectionObserver(
       entries => {
@@ -222,11 +190,9 @@ const galleryObserver = typeof window !== 'undefined'
     )
   : null
 
-/* ── Lazy image ── */
 function LazyImg({ src, alt }) {
   const [errored, setErrored] = useState(false)
   const [loaded, setLoaded] = useState(false)
-
   if (errored) {
     return (
       <div className="w-full bg-[#1a2332] flex items-center justify-center" style={{ aspectRatio: '4/3' }}>
@@ -234,29 +200,18 @@ function LazyImg({ src, alt }) {
       </div>
     )
   }
-
   return (
     <div className="w-full relative">
-      {!loaded && (
-        <div className="w-full bg-[#e8e8e8] animate-pulse" style={{ aspectRatio: '4/3' }} />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
+      {!loaded && <div className="w-full bg-[#e8e8e8] animate-pulse" style={{ aspectRatio: '4/3' }} />}
+      <img src={src} alt={alt} loading="lazy" decoding="async"
         className={`w-full h-auto block transition-opacity duration-300 ${loaded ? 'opacity-100' : 'absolute inset-0 opacity-0'}`}
-        onLoad={() => setLoaded(true)}
-        onError={() => setErrored(true)}
-      />
+        onLoad={() => setLoaded(true)} onError={() => setErrored(true)} />
     </div>
   )
 }
 
-/* ── Gallery Card ── */
 function GalleryCard({ item, index, onClick }) {
   const ref = useRef(null)
-
   useEffect(() => {
     const el = ref.current
     if (el && galleryObserver) {
@@ -264,13 +219,8 @@ function GalleryCard({ item, index, onClick }) {
       return () => galleryObserver.unobserve(el)
     }
   }, [])
-
   return (
-    <div
-      ref={ref}
-      className="gallery-card break-inside-avoid mb-2 group relative overflow-hidden cursor-pointer bg-gray-100"
-      onClick={onClick}
-    >
+    <div ref={ref} className="gallery-card break-inside-avoid mb-2 group relative overflow-hidden cursor-pointer bg-gray-100" onClick={onClick}>
       <LazyImg src={item.src} alt={item.label} />
       <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
@@ -290,7 +240,6 @@ function GalleryCard({ item, index, onClick }) {
 export function GallerySection() {
   const [active, setActive] = useState('All')
   const [lightbox, setLightbox] = useState(null)
-
   const filtered = active === 'All' ? GALLERY_ITEMS : GALLERY_ITEMS.filter(g => g.cat === active)
 
   useEffect(() => {
@@ -311,7 +260,6 @@ export function GallerySection() {
 
   const prev = () => setLightbox(i => (i - 1 + filtered.length) % filtered.length)
   const next = () => setLightbox(i => (i + 1) % filtered.length)
-
   const counts = ALL_CATS.reduce((acc, cat) => {
     acc[cat] = cat === 'All' ? GALLERY_ITEMS.length : GALLERY_ITEMS.filter(g => g.cat === cat).length
     return acc
@@ -323,7 +271,6 @@ export function GallerySection() {
         .gallery-card { opacity: 0; transform: translateY(8px); transition: opacity 0.25s ease, transform 0.25s ease; }
         .gallery-card.revealed { opacity: 1; transform: none; }
       `}</style>
-
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
@@ -344,23 +291,18 @@ export function GallerySection() {
             </div>
           </Reveal>
         </div>
-
         <Reveal delay={80}>
           <div className="flex flex-wrap gap-2 mb-10">
             {ALL_CATS.map(cat => (
-              <button
-                key={cat}
-                onClick={() => { setActive(cat); setLightbox(null) }}
+              <button key={cat} onClick={() => { setActive(cat); setLightbox(null) }}
                 className={`font-mont text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 transition-all duration-200 border flex items-center gap-2
-                  ${active === cat ? 'bg-orange text-white border-orange' : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'}`}
-              >
+                  ${active === cat ? 'bg-orange text-white border-orange' : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'}`}>
                 {cat}
                 <span className={`text-[10px] font-black ${active === cat ? 'text-white/70' : 'text-mgray/60'}`}>{counts[cat]}</span>
               </button>
             ))}
           </div>
         </Reveal>
-
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-2">
           {filtered.map((item, i) => (
             <GalleryCard key={`${active}-${i}`} item={item} index={i} onClick={() => setLightbox(i)} />
@@ -389,7 +331,8 @@ export function GallerySection() {
           <button onClick={e => { e.stopPropagation(); next() }} className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-3xl transition-colors z-10">›</button>
           <div className="absolute left-0 right-0 flex gap-1.5 p-2 overflow-x-auto bg-black/80 z-10" style={{ bottom: '68px' }}>
             {filtered.map((item, i) => (
-              <div key={i} onClick={e => { e.stopPropagation(); setLightbox(i) }} className={`flex-shrink-0 w-16 h-16 overflow-hidden cursor-pointer border-2 transition-all ${i === lightbox ? 'border-orange' : 'border-transparent opacity-40 hover:opacity-80'}`}>
+              <div key={i} onClick={e => { e.stopPropagation(); setLightbox(i) }}
+                className={`flex-shrink-0 w-16 h-16 overflow-hidden cursor-pointer border-2 transition-all ${i === lightbox ? 'border-orange' : 'border-transparent opacity-40 hover:opacity-80'}`}>
                 <img src={item.src} alt="" loading="lazy" className="w-full h-full object-cover" onError={e => { e.target.style.opacity = '0' }} />
               </div>
             ))}
@@ -442,7 +385,9 @@ export function WhyUs() {
               <div className="grid grid-cols-2 grid-rows-2 gap-1">
                 {WHY_IMGS.map((img, i) => (
                   <div key={i} className={`overflow-hidden bg-[#1a2a3a] ${img.tall ? 'row-span-2' : ''}`}>
-                    <img src={img.src} alt={img.label} loading="lazy" decoding="async" className={`w-full object-cover brightness-75 hover:brightness-90 transition-all duration-500 hover:scale-105 ${img.tall ? 'h-[424px]' : 'h-[210px]'}`} onError={e => { e.target.style.display = 'none' }} />
+                    <img src={img.src} alt={img.label} loading="lazy" decoding="async"
+                      className={`w-full object-cover brightness-75 hover:brightness-90 transition-all duration-500 hover:scale-105 ${img.tall ? 'h-[424px]' : 'h-[210px]'}`}
+                      onError={e => { e.target.style.display = 'none' }} />
                   </div>
                 ))}
               </div>
@@ -561,18 +506,67 @@ export function Testimonials() {
   )
 }
 
-/* ── BRANDS ── */
+/* ══════════════════════════════════════════════════
+   ── BRANDS — seamless logo carousel ── (UPDATED)
+══════════════════════════════════════════════════ */
+const BRAND_LOGOS = [
+  { name: 'Pandora',           logo: '/logos/pandora.png' },
+  { name: 'Optus',             logo: '/logos/optus.png' },
+  { name: 'Baskin-Robbins',    logo: '/logos/Baskin-Robbins.png' },
+  { name: 'Chemist Warehouse', logo: '/logos/cim.png' },
+  { name: 'Beko',              logo: '/logos/beko-logo.png' },
+  { name: 'Wiley & Co',        logo: '/logos/willy.jpg' },
+]
+
 export function Brands() {
+  // Duplicate 3x for a seamless infinite loop
+  const items = [...BRAND_LOGOS, ...BRAND_LOGOS, ...BRAND_LOGOS]
+
   return (
-    <div className="bg-white border-t border-lg py-11">
-      <div className="max-w-[1240px] mx-auto px-6">
-        <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray text-center mb-7">Trusted by Australia's best-known brands</div>
-        <div className="flex items-center justify-center gap-12 flex-wrap">
-          {BRANDS.map(b => (
-            <span key={b} className="font-mont text-[15px] font-black text-[#ccc] hover:text-mgray transition-colors cursor-default tracking-tight">{b}</span>
+    <div className="bg-white border-t border-lg py-12 overflow-hidden">
+      <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray text-center mb-8">
+        Trusted by Australia's best-known brands
+      </div>
+
+      {/* Fade edges */}
+      <div
+        className="relative"
+        style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}
+      >
+        <div className="brands-track flex items-center gap-16" style={{ width: 'max-content' }}>
+          {items.map((brand, i) => (
+            <div key={i} className="flex-shrink-0 flex items-center justify-center" style={{ width: '160px', height: '70px' }}>
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="max-h-[64px] max-w-[160px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 cursor-default"
+
+                onError={e => {
+                  e.target.style.display = 'none'
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'block'
+                }}
+              />
+              {/* Fallback text if logo fails */}
+              <span className="font-mont text-[15px] font-black text-[#ccc] tracking-tight hidden">
+                {brand.name}
+              </span>
+            </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .brands-track {
+          animation: brands-scroll 22s linear infinite;
+        }
+        .brands-track:hover {
+          animation-play-state: paused;
+        }
+        @keyframes brands-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+      `}</style>
     </div>
   )
 }

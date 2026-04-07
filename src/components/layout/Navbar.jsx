@@ -30,11 +30,18 @@ export default function Navbar() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const goHome = () => {
+    setOpen(false)
+    navigate('/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <nav className={`bg-navy sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-[0_4px_30px_rgba(0,0,0,0.4)]' : 'shadow-[0_2px_20px_rgba(0,0,0,0.3)]'}`}>
       <div className="max-w-[1240px] mx-auto px-6 h-[68px] flex items-center justify-between gap-6">
+
         {/* Logo */}
-        <div className="cursor-pointer flex-shrink-0" onClick={() => navigate('/')}>
+        <div className="cursor-pointer flex-shrink-0" onClick={goHome}>
           <div className="font-mont text-[19px] font-black text-white leading-tight">ShopFittings</div>
           <div className="font-mont text-[10px] font-semibold text-orange tracking-[2.5px] uppercase mt-0.5">Solutions Group</div>
         </div>
