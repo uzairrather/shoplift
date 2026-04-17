@@ -215,41 +215,42 @@ export const SECTORS = [
   },
 ]
 
+// ✅ UPDATED from DOCX — detailed process descriptions
 export const PROCESS_STEPS = [
   {
     num: '01',
-    title: 'Initial Consultation',
-    desc: 'We start with a no-obligation discussion about your vision, budget, and timeline.',
+    title: 'Brief & Discovery',
+    desc: 'Every project begins with a structured briefing process to fully understand your brand, commercial objectives, budget parameters, and the functional requirements of the space.',
     duration: null,
   },
   {
     num: '02',
-    title: 'Concept & Brief',
-    desc: 'We develop a detailed brief and concept direction based on your consultation outcomes.',
+    title: 'Concept Design',
+    desc: 'We develop a range of design concepts aligned to the approved brief, presented using advanced 3D visualisation and rendering technology to clearly communicate intent, materials, and spatial relationships.',
     duration: '1–2 Days',
   },
   {
     num: '03',
-    title: 'Design & 3D Visuals',
-    desc: 'Our designers create detailed 3D visualisations and technical drawings for your approval.',
+    title: 'Documentation',
+    desc: 'Every component is precisely designed and documented to enable offshore manufacture. This generates accurate costings early and allows us to refine the design through value engineering.',
     duration: '1–2 Weeks',
   },
   {
     num: '04',
     title: 'Approvals & Permits',
-    desc: 'We assist with all council approvals, building permits, and compliance requirements.',
+    desc: 'We assist with all council approvals, building permits, and compliance requirements — coordinating with relevant authorities so your project stays on schedule.',
     duration: '2–4 Weeks',
   },
   {
     num: '05',
-    title: 'Build & Install',
-    desc: 'Our skilled tradespeople bring the design to life with quality craftsmanship.',
+    title: 'Manufacture & Delivery',
+    desc: 'Components are manufactured as integrated kits — incorporating joinery, signage, lighting, and services — then imported as complete kits ready for streamlined on-site installation.',
     duration: '6–12 Weeks',
   },
   {
     num: '06',
-    title: 'Handover',
-    desc: 'Final walkthrough and handover with ongoing support.',
+    title: 'Installation & Handover',
+    desc: 'Fast, efficient, and predictable on-site assembly reduces construction time, labour costs, and project risk. Final walkthrough and handover with ongoing support.',
     duration: null,
   },
 ]
@@ -513,10 +514,11 @@ export const TESTIMONIALS = [
 export const BRANDS = ['Pandora', 'Optus', 'Baskin-Robbins', 'Chemist Warehouse', 'Beko', 'Wiley & Co']
 
 export const NAV_LINKS = [
-  { label: 'Services', href: 'services' },
-  { label: 'Gallery', href: 'gallery' },
-  { label: 'Projects', href: 'projects' },
-  { label: 'Why Us', href: 'why-us' },
-  { label: 'Reviews', href: 'testimonials' },
-  { label: 'Contact', href: 'contact' },
+  { label: 'Services',  href: 'services' },
+  { label: 'Gallery',   href: 'gallery' },
+  { label: 'Projects',  href: 'projects' },
+  { label: 'About',     href: 'about' },
+  { label: 'Why Us',    href: 'why-us' },
+  { label: 'Reviews',   href: 'testimonials' },
+  { label: 'Contact',   href: 'contact' },
 ]

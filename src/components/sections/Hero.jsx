@@ -53,7 +53,6 @@ export default function Hero() {
       <div className="max-w-[1240px] mx-auto px-6 py-20 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-16 items-center" ref={heroRef}>
         {/* LEFT */}
         <div>
-          {/* ✅ CHANGED: eyebrow text */}
           <div data-anim className="inline-flex items-center gap-2.5 font-mont text-[11px] font-bold tracking-[3px] uppercase text-orange mb-5">
             <span className="w-7 h-0.5 bg-orange" />
             Specialist Retail Design & Delivery
@@ -68,7 +67,6 @@ export default function Hero() {
             On Spec · On Time · On Budget
           </p>
 
-          {/* ✅ CHANGED: body paragraph */}
           <p data-anim className="text-[15px] leading-[1.85] text-white/55 max-w-[520px] mb-10 font-light">
             From jewellery boutiques to Mini Majors, kiosks to cafes — we design and build retail environments that drive sales and create unforgettable customer experiences across Australia.
           </p>
@@ -119,6 +117,34 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* ── SCROLL DOWN ARROW ── */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <button
+          onClick={() => scrollTo('services')}
+          className="flex flex-col items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-300 group"
+        >
+          <span className="font-mont text-[9px] font-bold uppercase tracking-[2px] text-white group-hover:text-orange transition-colors">
+            Scroll
+          </span>
+          <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-orange group-hover:bg-orange/10 transition-all duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14" height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white group-hover:text-orange transition-colors animate-bounce"
+            >
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </button>
+      </div>
+
     </section>
   )
 }

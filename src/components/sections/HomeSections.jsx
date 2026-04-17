@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { useReveal, useCountUp } from '../../hooks'
 import { TRUST_ITEMS, SERVICES_LIST, PROJECTS_LIST, TESTIMONIALS, BRANDS, SECTORS, PROCESS_STEPS } from '../../data'
 
-/* ── REVEAL WRAPPER ── */
 function Reveal({ children, className = '', dir = 'up', delay = 0 }) {
   const cls = dir === 'left' ? 'reveal-left' : dir === 'right' ? 'reveal-right' : 'reveal'
   const ref = useReveal()
@@ -33,11 +32,56 @@ export function TrustStrip() {
   )
 }
 
+/* ══════════════════════════════════════════════════
+   ── WELCOME SECTION ── ✅ NEW from DOCX
+══════════════════════════════════════════════════ */
+export function WelcomeSection() {
+  return (
+    <section id="about" className="py-20 bg-white">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <Reveal dir="left">
+            <div className="section-eyebrow">About Us</div>
+            <h2 className="section-title">Welcome to Shopfitting<br />Solutions International</h2>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Shopfitting Solutions Intl is a specialist design and delivery business focused on creating modular, cost-effective retail environments that are efficient to manufacture, transport, and install. We combine strong retail design principles with smart construction methodologies to help clients achieve high-quality outcomes without the cost and complexity of traditional shopfitting.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Using cutting-edge design, documentation, and digital drafting technologies, we develop retail interiors as a series of coordinated modular components. These components are value-engineered, standardised where appropriate, and designed to be manufactured offshore, then imported as complete kits ready for streamlined on-site installation. This approach significantly reduces build time, labour requirements, and overall project risk.
+            </p>
+          </Reveal>
+          <Reveal dir="right" delay={80}>
+            <p className="text-[14px] text-mgray leading-relaxed font-light">
+              We work across a broad range of retail sectors, partnering closely with retailers, builders, and developers to deliver interiors that are flexible, scalable, and repeatable across multiple locations. Whether for single stores or national roll-outs, our systems are designed to maintain design consistency while allowing for site-specific adaptation.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              At every stage, we focus on practical design solutions that deliver commercial value — balancing aesthetics, durability, compliance, and cost. The result is retail spaces that are efficient to build, easy to install, and built to perform in real-world trading environments.
+            </p>
+            <div className="mt-8 grid grid-cols-2 gap-4">
+              {[
+                { num: '500+', label: 'Projects Completed' },
+                { num: '20+', label: 'Years Experience' },
+                { num: '100%', label: 'Client Satisfaction' },
+                { num: 'Global', label: 'Manufacturing Reach' },
+              ].map(stat => (
+                <div key={stat.label} className="bg-offwhite p-5 border-l-4 border-orange">
+                  <div className="font-mont text-[22px] font-black text-navy">{stat.num}</div>
+                  <div className="font-mont text-[10px] font-bold uppercase tracking-[1.5px] text-mgray mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ── SERVICES GRID ── */
 export function ServicesGrid() {
   const navigate = useNavigate()
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-20 bg-offwhite">
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-14">
           <div>
@@ -50,13 +94,11 @@ export function ServicesGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#ddd]">
           {SERVICES_LIST.map((svc, i) => (
             <Reveal key={svc.key} delay={i * 60}>
-              <div
-                onClick={() => navigate(`/services/${svc.key}`)}
+              <div onClick={() => navigate(`/services/${svc.key}`)}
                 className="group bg-white hover:bg-offwhite transition-colors p-11 relative overflow-hidden cursor-pointer h-full"
                 style={{ borderBottom: '4px solid transparent' }}
                 onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#16a34a'}
-                onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'transparent'}
-              >
+                onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'transparent'}>
                 <div className="font-mont text-[46px] font-black text-navy/[0.055] absolute top-4 right-5 leading-none select-none">{svc.num}</div>
                 <div className="w-[54px] h-[54px] bg-orange flex items-center justify-center text-[22px] mb-5 group-hover:scale-105 transition-transform">{svc.icon}</div>
                 <h3 className="font-mont text-[15px] font-black text-navy uppercase tracking-[0.5px] mb-3">{svc.name}</h3>
@@ -76,23 +118,19 @@ export function ServicesGrid() {
 /* ── SECTORS SECTION ── */
 export function SectorsSection() {
   return (
-    <section className="py-20 bg-offwhite">
+    <section className="py-20 bg-white">
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-14">
           <div>
             <Reveal><div className="section-eyebrow">Industries We Serve</div></Reveal>
             <Reveal delay={80}><h2 className="section-title">We Work Across All Retail Sectors</h2></Reveal>
-            <Reveal delay={160}>
-              <p className="text-[14px] text-mgray leading-relaxed max-w-[520px] mt-3 font-light">
-                Whether you're opening a luxury boutique or a bustling Mini Major — we bring industry-specific expertise to every project.
-              </p>
-            </Reveal>
+            <Reveal delay={160}><p className="text-[14px] text-mgray leading-relaxed max-w-[520px] mt-3 font-light">Whether you're opening a luxury boutique or a bustling Mini Major — we bring industry-specific expertise to every project.</p></Reveal>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SECTORS.map((sector, i) => (
             <Reveal key={sector.name} delay={i * 60}>
-              <div className="bg-white p-8 border-l-4 border-orange h-full hover:shadow-md transition-shadow">
+              <div className="bg-offwhite p-8 border-l-4 border-orange h-full hover:shadow-md transition-shadow">
                 <h3 className="font-mont text-[15px] font-black text-navy uppercase tracking-[0.5px] mb-2">{sector.name}</h3>
                 <p className="text-[13px] text-mgray leading-relaxed font-light mb-4">{sector.desc}</p>
                 <div className="flex flex-wrap gap-2">
@@ -117,11 +155,7 @@ export function ProcessSection() {
         <div className="text-center mb-14">
           <Reveal><div className="section-eyebrow text-orange">How It Works</div></Reveal>
           <Reveal delay={80}><h2 className="section-title text-white">Our Process</h2></Reveal>
-          <Reveal delay={160}>
-            <p className="text-[14px] text-white/45 leading-relaxed max-w-[500px] mt-3 font-light mx-auto">
-              From first conversation to final handover — a clear, structured process that keeps you informed at every stage.
-            </p>
-          </Reveal>
+          <Reveal delay={160}><p className="text-[14px] text-white/45 leading-relaxed max-w-[500px] mt-3 font-light mx-auto">From first conversation to final handover — a clear, structured process that keeps you informed at every stage.</p></Reveal>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.07]">
           {PROCESS_STEPS.map((step, i) => (
@@ -131,9 +165,7 @@ export function ProcessSection() {
                 <div className="w-8 h-0.5 bg-orange mb-5" />
                 <h3 className="font-mont text-[14px] font-black text-white uppercase tracking-[0.5px] mb-2">{step.title}</h3>
                 <p className="text-[13px] text-white/45 leading-relaxed font-light mb-4">{step.desc}</p>
-                {step.duration && (
-                  <span className="inline-block font-mont text-[10px] font-black uppercase tracking-[2px] text-orange bg-orange/10 px-3 py-1">{step.duration}</span>
-                )}
+                {step.duration && <span className="inline-block font-mont text-[10px] font-black uppercase tracking-[2px] text-orange bg-orange/10 px-3 py-1">{step.duration}</span>}
               </div>
             </Reveal>
           ))}
@@ -144,8 +176,116 @@ export function ProcessSection() {
 }
 
 /* ══════════════════════════════════════════════════
-   ── GALLERY SECTION ──
+   ── INTEGRATED RETAIL KITS ── ✅ NEW from DOCX
 ══════════════════════════════════════════════════ */
+const KIT_ITEMS = [
+  { icon: '🪵', title: 'Custom Joinery & Fixtures', desc: 'Precision-engineered modular units designed for efficient manufacture, transport, and on-site assembly.' },
+  { icon: '🎨', title: 'Signage & Graphics', desc: 'Integrated brand identity elements that ensure your space communicates your brand at every touchpoint.' },
+  { icon: '💡', title: 'Lighting & Feature Lighting', desc: 'Pre-configured electrical layouts to enhance product appeal and create the perfect retail atmosphere.' },
+  { icon: '📱', title: 'Digital Features', desc: 'Seamlessly embedded tech for modern consumer engagement — screens, interactive displays, and more.' },
+]
+
+export function IntegratedKits() {
+  return (
+    <section className="py-20 bg-offwhite">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <Reveal dir="left">
+            <div className="section-eyebrow">Our Signature Offering</div>
+            <h2 className="section-title">Integrated Retail Kits</h2>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Our signature Retail Kits are designed to eliminate the complexity of traditional construction. By consolidating multiple trades into a single, coordinated system, we simplify the installation process and significantly reduce overall fit-out costs.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              By utilising these coordinated components, we deliver amazing spaces that do more than just look good — they are strategically built to drive sales and elevate the customer experience.
+            </p>
+            <button
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="btn-orange mt-8"
+            >
+              Get a Free Consultation →
+            </button>
+          </Reveal>
+          <Reveal dir="right" delay={80}>
+            <div className="flex flex-col gap-4">
+              {KIT_ITEMS.map((item, i) => (
+                <Reveal key={item.title} delay={i * 60}>
+                  <div className="bg-white p-6 flex gap-5 items-start border-l-4 border-orange hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 bg-orange/10 flex items-center justify-center text-[22px] flex-shrink-0">{item.icon}</div>
+                    <div>
+                      <div className="font-mont text-[13px] font-black text-navy uppercase tracking-[0.5px] mb-1.5">{item.title}</div>
+                      <div className="text-[13px] text-mgray leading-relaxed font-light">{item.desc}</div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ══════════════════════════════════════════════════
+   ── OUR CLIENTS + OUR GOAL ── ✅ NEW from DOCX
+══════════════════════════════════════════════════ */
+export function OurClients() {
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          {/* Our Clients */}
+          <Reveal dir="left">
+            <div className="section-eyebrow">Who We Work With</div>
+            <h2 className="section-title">Our Clients</h2>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              We work with a diverse range of clients including retailers, shopfitters, designers, and landlords, supporting projects across both single-site fit-outs and large-scale retail roll-outs. Our team has been involved in the design and production of hundreds of modular retail kits, spanning a wide variety of sectors such as jewellery, technology, gifts, newsagencies, telecommunications, food, medical, and specialty retail, among many others.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Whether our clients are delivering a one-off store or rolling out multiple locations nationally or internationally, we provide flexible support across key stages of the design and fit-out process. This can include early concept design, value engineering, detailed documentation, modular kit development, and coordination through manufacture and delivery.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Our team brings together qualifications in industrial design, interior design, and graphic design, combined with practical experience in construction, shopfitting, and international manufacturing and importing. This unique mix of skills allows us to manage an integrated, end-to-end process — from initial design development, through offshore manufacture, to logistics, shipping, and the delivery of completed components ready for efficient on-site installation.
+            </p>
+          </Reveal>
+
+          {/* Our Goal */}
+          <Reveal dir="right" delay={80}>
+            <div className="section-eyebrow">What Drives Us</div>
+            <h2 className="section-title">Our Goal</h2>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Our goal is to empower retailers, shopfitters, and designers to deliver exceptional retail environments without compromising on quality, finish, or commercial performance. We aim to create fit-outs that are sales-focused, customer-friendly, and operationally efficient, supporting both the brand experience and day-to-day retail use.
+            </p>
+            <p className="text-[14px] text-mgray leading-relaxed mt-4 font-light">
+              Through thoughtful design, smart modular systems, and careful material selection, we focus on delivering retail spaces that are not only visually strong but also durable and built to withstand the demands of real-world trading over time. By balancing aesthetics, functionality, and value, we help our clients achieve retail outcomes that perform today and remain relevant well into the future.
+            </p>
+            <div className="mt-8 bg-navy p-8">
+              <div className="font-mont text-[11px] font-bold uppercase tracking-[2px] text-orange mb-4">Our Core Commitment</div>
+              <div className="flex flex-col gap-3">
+                {[
+                  'Sales-focused, customer-friendly environments',
+                  'Durable construction built for real-world trading',
+                  'Aesthetics balanced with long-term commercial value',
+                  'Consistent quality across single sites and national roll-outs',
+                ].map(point => (
+                  <div key={point} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 flex-shrink-0" />
+                    <span className="text-[13px] text-white/60 font-light leading-relaxed">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── GALLERY ── */
 const GALLERY_ITEMS = [
   { src: '/OPTIMIZED/Laloma HR/LLMAtville081212_008.webp', label: 'Premium Retail Fitout', cat: 'Retail' },
   { src: '/OPTIMIZED/NJ hires shots (1)/8.webp', label: 'Fashion Boutique Display', cat: 'Retail' },
@@ -177,29 +317,15 @@ const GALLERY_ITEMS = [
 const ALL_CATS = ['All', 'Retail', 'Hospitality', 'Commercial', 'Office', 'Medical', 'Joinery']
 
 const galleryObserver = typeof window !== 'undefined'
-  ? new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed')
-            galleryObserver.unobserve(entry.target)
-          }
-        })
-      },
-      { rootMargin: '0px 0px -40px 0px', threshold: 0.05 }
-    )
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); galleryObserver.unobserve(entry.target) } })
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 })
   : null
 
 function LazyImg({ src, alt }) {
   const [errored, setErrored] = useState(false)
   const [loaded, setLoaded] = useState(false)
-  if (errored) {
-    return (
-      <div className="w-full bg-[#1a2332] flex items-center justify-center" style={{ aspectRatio: '4/3' }}>
-        <span className="text-white/20 text-xs font-mont uppercase tracking-widest">Photo</span>
-      </div>
-    )
-  }
+  if (errored) return <div className="w-full bg-[#1a2332] flex items-center justify-center" style={{ aspectRatio: '4/3' }}><span className="text-white/20 text-xs font-mont uppercase tracking-widest">Photo</span></div>
   return (
     <div className="w-full relative">
       {!loaded && <div className="w-full bg-[#e8e8e8] animate-pulse" style={{ aspectRatio: '4/3' }} />}
@@ -210,14 +336,11 @@ function LazyImg({ src, alt }) {
   )
 }
 
-function GalleryCard({ item, index, onClick }) {
+function GalleryCard({ item, onClick }) {
   const ref = useRef(null)
   useEffect(() => {
     const el = ref.current
-    if (el && galleryObserver) {
-      galleryObserver.observe(el)
-      return () => galleryObserver.unobserve(el)
-    }
+    if (el && galleryObserver) { galleryObserver.observe(el); return () => galleryObserver.unobserve(el) }
   }, [])
   return (
     <div ref={ref} className="gallery-card break-inside-avoid mb-2 group relative overflow-hidden cursor-pointer bg-gray-100" onClick={onClick}>
@@ -226,12 +349,6 @@ function GalleryCard({ item, index, onClick }) {
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
         <div className="font-mont text-[9px] font-bold uppercase tracking-[3px] text-orange mb-1">{item.cat}</div>
         <div className="font-mont text-[14px] font-black text-white leading-tight">{item.label}</div>
-      </div>
-      <div className="absolute top-3 right-3 w-9 h-9 bg-orange flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 pointer-events-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-        </svg>
       </div>
     </div>
   )
@@ -260,34 +377,22 @@ export function GallerySection() {
 
   const prev = () => setLightbox(i => (i - 1 + filtered.length) % filtered.length)
   const next = () => setLightbox(i => (i + 1) % filtered.length)
-  const counts = ALL_CATS.reduce((acc, cat) => {
-    acc[cat] = cat === 'All' ? GALLERY_ITEMS.length : GALLERY_ITEMS.filter(g => g.cat === cat).length
-    return acc
-  }, {})
+  const counts = ALL_CATS.reduce((acc, cat) => { acc[cat] = cat === 'All' ? GALLERY_ITEMS.length : GALLERY_ITEMS.filter(g => g.cat === cat).length; return acc }, {})
 
   return (
-    <section id="gallery" className="py-20 bg-white">
-      <style>{`
-        .gallery-card { opacity: 0; transform: translateY(8px); transition: opacity 0.25s ease, transform 0.25s ease; }
-        .gallery-card.revealed { opacity: 1; transform: none; }
-      `}</style>
+    <section id="gallery" className="py-20 bg-offwhite">
+      <style>{`.gallery-card { opacity: 0; transform: translateY(8px); transition: opacity 0.25s ease, transform 0.25s ease; } .gallery-card.revealed { opacity: 1; transform: none; }`}</style>
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
             <Reveal><div className="section-eyebrow">Our Gallery</div></Reveal>
             <Reveal delay={80}><h2 className="section-title">Project Photo Gallery</h2></Reveal>
-            <Reveal delay={160}>
-              <p className="text-[14px] text-mgray leading-relaxed max-w-[540px] mt-3 font-light">
-                Browse our portfolio of {GALLERY_ITEMS.length}+ completed fitouts across retail, hospitality, commercial, office, and medical sectors. Click any photo to view full screen.
-              </p>
-            </Reveal>
+            <Reveal delay={160}><p className="text-[14px] text-mgray leading-relaxed max-w-[540px] mt-3 font-light">Browse our portfolio of {GALLERY_ITEMS.length}+ completed fitouts. Click any photo to view full screen.</p></Reveal>
           </div>
           <Reveal>
             <div className="text-right flex-shrink-0">
               <div className="font-mont text-[48px] font-black text-navy leading-none">{filtered.length}</div>
-              <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray mt-1">
-                {active === 'All' ? 'Total Projects' : `${active} Projects`}
-              </div>
+              <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray mt-1">{active === 'All' ? 'Total Projects' : `${active} Projects`}</div>
             </div>
           </Reveal>
         </div>
@@ -295,21 +400,16 @@ export function GallerySection() {
           <div className="flex flex-wrap gap-2 mb-10">
             {ALL_CATS.map(cat => (
               <button key={cat} onClick={() => { setActive(cat); setLightbox(null) }}
-                className={`font-mont text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 transition-all duration-200 border flex items-center gap-2
-                  ${active === cat ? 'bg-orange text-white border-orange' : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'}`}>
-                {cat}
-                <span className={`text-[10px] font-black ${active === cat ? 'text-white/70' : 'text-mgray/60'}`}>{counts[cat]}</span>
+                className={`font-mont text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 transition-all duration-200 border flex items-center gap-2 ${active === cat ? 'bg-orange text-white border-orange' : 'bg-white text-mgray border-lg hover:border-orange hover:text-orange'}`}>
+                {cat}<span className={`text-[10px] font-black ${active === cat ? 'text-white/70' : 'text-mgray/60'}`}>{counts[cat]}</span>
               </button>
             ))}
           </div>
         </Reveal>
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-2">
-          {filtered.map((item, i) => (
-            <GalleryCard key={`${active}-${i}`} item={item} index={i} onClick={() => setLightbox(i)} />
-          ))}
+          {filtered.map((item, i) => <GalleryCard key={`${active}-${i}`} item={item} index={i} onClick={() => setLightbox(i)} />)}
         </div>
       </div>
-
       {lightbox !== null && (
         <div className="fixed inset-0 z-[9999] bg-black/96 flex items-center justify-center" onClick={() => setLightbox(null)}>
           <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 w-11 h-11 bg-white/10 hover:bg-orange flex items-center justify-center text-white text-lg transition-colors z-10">✕</button>
@@ -345,10 +445,10 @@ export function GallerySection() {
 
 /* ── WHY US ── */
 const FEATURES = [
-  { icon: '🏭', title: 'In-House Manufacturing', desc: "Our joinery manufacturing ensures quality control and keeps costs down — no outsourcing mark-up, ever." },
-  { icon: '👷', title: 'Qualified Trades Team', desc: "Qualified tradespeople means quality workmanship and attention to detail. Done right the first time." },
-  { icon: '📋', title: 'Dedicated Project Manager', desc: "Single point of contact from estimation to completion. Always updated, always on schedule." },
-  { icon: '💰', title: 'Big Budget Savings', desc: "In-house capacity — tradespeople, machinery, and experience — adds up to big savings on your budget." },
+  { icon: '🧩', title: 'Modular Innovation', desc: 'We replace the complexity and high costs of traditional construction with smart, modular systems — value-engineered for offshore manufacture and streamlined on-site assembly.' },
+  { icon: '✏️', title: 'Expert Design Team', desc: 'Our team integrates industrial, interior, and graphic design expertise to develop interiors as coordinated, high-quality kits that look exceptional and perform commercially.' },
+  { icon: '🌏', title: 'Global Logistics', desc: 'Components are manufactured offshore and imported as complete kits ready for installation — significantly reducing build times, labour requirements, and overall project risk.' },
+  { icon: '🤝', title: 'End-to-End Partnership', desc: 'From initial brief through offshore manufacture to final handover — we manage the entire process, delivering spaces that are scalable, repeatable, and built for real-world trading.' },
 ]
 
 const WHY_IMGS = [
@@ -364,9 +464,9 @@ export function WhyUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <Reveal dir="left">
             <div className="section-eyebrow text-orange">Why Choose Us</div>
-            <h2 className="section-title text-white mt-0">Building Inspiring<br />Spaces Since 2002</h2>
+            <h2 className="section-title text-white mt-0">Why Choose Shopfitting<br />Solutions International?</h2>
             <p className="text-[14px] text-white/45 leading-relaxed mt-3 font-light max-w-[480px]">
-              With over 20 years of shopfitting experience, we offer a high level of professionalism and expertise trusted by Australia's most recognisable brands.
+              We redefine the retail fit-out experience by replacing the complexity and high costs of traditional construction with smart, modular innovation — delivering durable, compliant, and sales-focused solutions that balance aesthetic impact with long-term commercial value.
             </p>
             <div className="mt-8 flex flex-col">
               {FEATURES.map(f => (
@@ -422,9 +522,7 @@ export function ProjectsGrid() {
           <div className="grid grid-cols-2 lg:grid-cols-12 gap-1">
             <ProjectCard proj={pandora} className="col-span-2 lg:col-span-7 h-[370px]" />
             <ProjectCard proj={rest[0]} className="col-span-2 lg:col-span-5 h-[370px]" />
-            {rest.slice(1).map(p => (
-              <ProjectCard key={p.key} proj={p} className="col-span-1 lg:col-span-4 h-[250px]" />
-            ))}
+            {rest.slice(1).map(p => <ProjectCard key={p.key} proj={p} className="col-span-1 lg:col-span-4 h-[250px]" />)}
           </div>
         </Reveal>
       </div>
@@ -482,7 +580,7 @@ export function StatsBand() {
 /* ── TESTIMONIALS ── */
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-20">
+    <section id="testimonials" className="py-20 bg-white">
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="mb-14">
           <Reveal><div className="section-eyebrow">Client Feedback</div></Reveal>
@@ -491,10 +589,16 @@ export function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div className="bg-offwhite p-8 border-b-4 border-transparent hover:border-orange transition-colors h-full">
+              <div className="bg-offwhite p-8 border-b-4 border-transparent hover:border-orange transition-colors h-full flex flex-col relative">
+                {/* Avatar — top right */}
+                <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-navy flex items-center justify-center border-2 border-orange flex-shrink-0">
+                  <span className="font-mont text-[13px] font-black text-white">
+                    {t.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
                 <div className="font-serif text-[72px] text-orange opacity-15 leading-[0.65] mb-3">"</div>
                 <div className="text-[13px] text-orange tracking-[3px] mb-3">★★★★★</div>
-                <p className="text-[13px] text-dgray leading-relaxed italic mb-5 font-light">{t.text}</p>
+                <p className="text-[13px] text-dgray leading-relaxed italic mb-5 font-light flex-1">{t.text}</p>
                 <div className="font-mont text-[13px] font-bold text-navy">{t.name}</div>
                 <div className="text-[11px] text-mgray mt-0.5">{t.role}</div>
               </div>
@@ -506,9 +610,7 @@ export function Testimonials() {
   )
 }
 
-/* ══════════════════════════════════════════════════
-   ── BRANDS — seamless logo carousel ── (UPDATED)
-══════════════════════════════════════════════════ */
+/* ── BRANDS ── */
 const BRAND_LOGOS = [
   { name: 'Pandora',           logo: '/logos/pandora.png',        href: 'https://www.pandora.net/en-au' },
   { name: 'Optus',             logo: '/logos/optus.png',          href: 'https://www.optus.com.au' },
@@ -519,59 +621,22 @@ const BRAND_LOGOS = [
 ]
 
 export function Brands() {
-  // Duplicate 3x for a seamless infinite loop
   const items = [...BRAND_LOGOS, ...BRAND_LOGOS, ...BRAND_LOGOS]
-
   return (
     <div className="bg-white border-t border-lg py-12 overflow-hidden">
-      <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray text-center mb-8">
-        Trusted by Australia's best-known brands
-      </div>
-
-      {/* Fade edges */}
-      <div
-        className="relative"
-        style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}
-      >
+      <div className="font-mont text-[10px] font-bold uppercase tracking-[2px] text-mgray text-center mb-8">Trusted by Australia's best-known brands</div>
+      <div className="relative" style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
         <div className="brands-track flex items-center gap-16" style={{ width: 'max-content' }}>
           {items.map((brand, i) => (
-            <a
-              key={i}
-              href={brand.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{ width: '160px', height: '70px' }}
-            >
-              <img
-                src={brand.logo}
-                alt={brand.name}
-                className="max-h-[64px] max-w-[160px] w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                onError={e => {
-                  e.target.style.display = 'none'
-                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'block'
-                }}
-              />
-              <span className="font-mont text-[15px] font-black text-[#ccc] tracking-tight hidden">
-                {brand.name}
-              </span>
+            <a key={i} href={brand.href} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 flex items-center justify-center" style={{ width: '160px', height: '70px' }}>
+              <img src={brand.logo} alt={brand.name} className="max-h-[64px] max-w-[160px] w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                onError={e => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'block' }} />
+              <span className="font-mont text-[15px] font-black text-[#ccc] tracking-tight hidden">{brand.name}</span>
             </a>
           ))}
         </div>
       </div>
-
-      <style>{`
-        .brands-track {
-          animation: brands-scroll 22s linear infinite;
-        }
-        .brands-track:hover {
-          animation-play-state: paused;
-        }
-        @keyframes brands-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
-        }
-      `}</style>
+      <style>{`.brands-track { animation: brands-scroll 22s linear infinite; } .brands-track:hover { animation-play-state: paused; } @keyframes brands-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }`}</style>
     </div>
   )
 }
@@ -582,10 +647,25 @@ export function CtaBanner() {
     <div className="bg-orange py-16">
       <div className="max-w-[1240px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-7">
         <div>
-          <div className="font-mont font-black text-white tracking-tight mb-1.5" style={{ fontSize: 'clamp(20px,2.8vw,30px)' }}>Do You Have A Project We Can Help With?</div>
-          <div className="text-[14px] text-white/72 font-light">Get an obligation-free quote from Brisbane's most trusted shopfitters.</div>
+          <div className="font-mont font-black text-white tracking-tight mb-2" style={{ fontSize: 'clamp(20px,2.8vw,30px)' }}>
+            Let's Talk About Your Next Project
+          </div>
+          <div className="text-[14px] text-white/80 font-light max-w-[560px]">
+            We offer a no-obligation design consultation to explore how a modular retail kit or scalable roll-out solution could work for your space, budget, and timeline.
+          </div>
         </div>
-        <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="btn-white whitespace-nowrap flex-shrink-0 py-4 px-10 text-[11px] tracking-[2px]">Get a Quote Now →</button>
+        <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="btn-white whitespace-nowrap py-4 px-8 text-[11px] tracking-[2px]">
+            Get a Quote Now →
+          </button>
+          <a href="/ssi_brochure.pdf" download="SSI_Brochure.pdf"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap border-2 border-white text-white font-mont font-bold text-[11px] tracking-[2px] uppercase py-4 px-8 hover:bg-white hover:text-orange transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Brochure
+          </a>
+        </div>
       </div>
     </div>
   )
@@ -614,7 +694,7 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <Reveal dir="left">
             {[
-              { icon: '📍', label: 'Address', val: '717 Gympie Road, Lawnton QLD 4501' },
+              { icon: '📍', label: 'Address', val: 'Unit 27 / 43 Lang Parade, Milton QLD 4064' },
               { icon: '📞', label: 'Phone', val: '(07) 3889 9040 · 0412 969 268' },
               { icon: '✉️', label: 'Email', val: 'info@shopfittings.com.au' },
               { icon: '🕐', label: 'Hours', val: 'Monday – Friday: 7:00am – 5:00pm' },
